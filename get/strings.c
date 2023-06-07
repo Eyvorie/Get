@@ -27,6 +27,11 @@ String *new_string(char *literal)
   return new_string_known_len(literal, strlen(literal));
 }
 
+String *new_string_from_view(StringView *this)
+{
+  return new_string_known_len(this->characters, this->length);
+}
+
 bool compare_strings(String *this, String *other)
 {
   if (this->length != other->length)
