@@ -39,7 +39,8 @@ inline void init_token(Lexer *this, Token *token,
   LexerTokenType type, int value_length)
 {
   token->type = type;
-  init_string_view(&token->value, this->src, value_length);
+  init_string_view(&token->value, 
+    this->src, value_length);
 }
 
 bool is_number(char c)
