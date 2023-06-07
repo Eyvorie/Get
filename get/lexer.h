@@ -20,6 +20,7 @@ typedef enum {
   Put,
   Delete,
   Print,
+  Contains,
   
   // operators
   Add,

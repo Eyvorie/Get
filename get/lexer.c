@@ -28,6 +28,8 @@ void init_lexer(Lexer *this, char *src)
     new_string("delete"), new_integer_value(Delete));
   put_hashmap_entry(keywords,
     new_string("print"), new_integer_value(Print));
+  put_hashmap_entry(keywords,
+    new_string("contains"), new_integer_value(Contains));
   this->keywords = keywords;
 
   assert(keywords != NULL, "Lexer error: failed to initialize the lexer");
