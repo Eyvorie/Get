@@ -33,7 +33,8 @@ void init_lexer(Lexer *this, char *src)
   assert(keywords != NULL, "Lexer error: failed to initialize the lexer");
 }
 
-inline void init_token(Lexer *this, LexerToken *token, LexerTokenType type, int value_length)
+inline void init_token(Lexer *this, Token *token,
+  LexerTokenType type, int value_length)
 {
   token->type = type;
   init_string_view(&token->value, this->src, value_length);
@@ -51,7 +52,7 @@ bool is_alphanumeric(char c)
 }
 
 void peak_next_lexer_token(Lexer *this, 
-  LexerToken *token)
+  Token *token)
 {
   while (*this->src == ' ')
     this->src++;
@@ -133,12 +134,12 @@ void peak_next_lexer_token(Lexer *this,
   assert(false, "Lexer error: illegal token");
 }
 
-void consume_lexer_token(Lexer *this, LexerToken *token)
+void consume_lexer_token(Lexer *this, Token *token)
 {
   this->src += string_len(&token->value);
 }
 
-void get_next_lexer_token(Lexer *this, LexerToken *token)
+void get_next_lexer_token(Lexer *this, Token *token)
 {
   peak_next_lexer_token(this, token);
   consume_lexer_token(this, token);
