@@ -11,23 +11,23 @@ void init_lexer(Lexer *this, char *src)
   // map keywords
   HashMap *keywords = new_hashmap();
   put_hashmap_entry(keywords,
-    new_string("if"), new_integer_value(LexerTokenIf));
+    new_string("if"), new_integer_value(If));
   put_hashmap_entry(keywords,
-    new_string("else"), new_integer_value(LexerTokenElse));
+    new_string("else"), new_integer_value(Else));
   put_hashmap_entry(keywords,
-    new_string("for"), new_integer_value(LexerTokenFor));
+    new_string("for"), new_integer_value(For));
   put_hashmap_entry(keywords,
-    new_string("while"), new_integer_value(LexerTokenWhile));
+    new_string("while"), new_integer_value(While));
   put_hashmap_entry(keywords,
-    new_string("get"), new_integer_value(LexerTokenGet));
+    new_string("get"), new_integer_value(Get));
   put_hashmap_entry(keywords,
-    new_string("post"), new_integer_value(LexerTokenPost));
+    new_string("post"), new_integer_value(Post));
   put_hashmap_entry(keywords,
-    new_string("put"), new_integer_value(LexerTokenPut));
+    new_string("put"), new_integer_value(Put));
   put_hashmap_entry(keywords,
-    new_string("delete"), new_integer_value(LexerTokenDelete));
+    new_string("delete"), new_integer_value(Delete));
   put_hashmap_entry(keywords,
-    new_string("print"), new_integer_value(LexerTokenPrint));
+    new_string("print"), new_integer_value(Print));
   this->keywords = keywords;
 
   assert(keywords != NULL, "Lexer error: failed to initialize the lexer");
@@ -59,48 +59,48 @@ void peak_next_lexer_token(Lexer *this,
 
   switch (c) {
     case '+':
-      init_token(this, token, LexerTokenAdd, 1);
+      init_token(this, token, Add, 1);
       return;
     case '-':
-      init_token(this, token, LexerTokenSubtract, 1);
+      init_token(this, token, Subtract, 1);
       return;
     case '*':
-      init_token(this, token, LexerTokenMultiply, 1);
+      init_token(this, token, Multiply, 1);
       return;
     case '/':
-      init_token(this, token, LexerTokenDivide, 1);
+      init_token(this, token, Divide, 1);
       return;
     case '=':
-      init_token(this, token, LexerTokenAssign, 1);
+      init_token(this, token, Assign, 1);
       return;
     case ',':
-      init_token(this, token, LexerTokenComma, 1);
+      init_token(this, token, Comma, 1);
       return;
     case '(':
-      init_token(this, token, LexerTokenLParen, 1);
+      init_token(this, token, LeftParen, 1);
       return;
     case ')':
-      init_token(this, token, LexerTokenRParen, 1);
+      init_token(this, token, RightParen, 1);
       return;
     case '<':
-      init_token(this, token, LexerTokenLessThan, 1);
+      init_token(this, token, LessThan, 1);
       return;
     case '>':
-      init_token(this, token, LexerTokenGreaterThan, 1);
+      init_token(this, token, GreaterThan, 1);
       return;
     case '\0':
-      init_token(this, token, LexerTokenEOF, 1);
+      init_token(this, token, EndOfFile, 1);
       return;
     case '\n':
-      init_token(this, token, LexerTokenNewline, 1);
+      init_token(this, token, Newline, 1);
       return;
     case '\r':
-      init_token(this, token, LexerTokenNewline, 2);
+      init_token(this, token, Newline, 2);
       return;
     case '"': {
       char *end_quote = strchr(this->src + 1, '"');
       assert(end_quote != NULL, "Lexer error: missing end quote");
-      init_token(this, token, LexerTokenString, end_quote - this->src + 1);
+      init_token(this, token, StringLiteral, end_quote - this->src + 1);
       return;
     }
   }
@@ -109,7 +109,7 @@ void peak_next_lexer_token(Lexer *this,
     char *number = this->src;
     while (is_number(*number))
       number++;
-    init_token(this, token, LexerTokenInt, number - this->src);
+    init_token(this, token, IntegerLiteral, number - this->src);
     return;
   }
 
@@ -125,7 +125,7 @@ void peak_next_lexer_token(Lexer *this,
       free_string(key);
       return;
     }
-    init_token(this, token, LexerTokenIdentifier, len);
+    init_token(this, token, Identifier, len);
     free_string(key);
     return;
   }

@@ -7,43 +7,43 @@
 typedef enum {
 
   // variable
-  LexerTokenIdentifier,
-  LexerTokenFunction,
+  Identifier,
+  Function,
 
   // keywords
-  LexerTokenIf,
-  LexerTokenElse,
-  LexerTokenFor,
-  LexerTokenWhile,
-  LexerTokenGet,
-  LexerTokenPost,
-  LexerTokenPut,
-  LexerTokenDelete,
-  LexerTokenPrint,
+  If,
+  Else,
+  For,
+  While,
+  Get,
+  Post,
+  Put,
+  Delete,
+  Print,
   
   // operators
-  LexerTokenAdd,
-  LexerTokenSubtract,
-  LexerTokenMultiply,
-  LexerTokenDivide,
-  LexerTokenAssign,
-  LexerTokenEquals,
-  LexerTokenPeriod,
-  LexerTokenComma,
-  LexerTokenLParen,
-  LexerTokenRParen,
-  LexerTokenLessThan,
-  LexerTokenGreaterThan,
+  Add,
+  Subtract,
+  Multiply,
+  Divide,
+  Assign,
+  Equals,
+  Period,
+  Comma,
+  LeftParen,
+  RightParen,
+  LessThan,
+  GreaterThan,
 
   // literals
-  LexerTokenTrue,
-  LexerTokenFalse,
-  LexerTokenString,
-  LexerTokenInt,
+  TrueLiteral,
+  FalseLiteral,
+  StringLiteral,
+  IntegerLiteral,
 
   // control characters
-  LexerTokenNewline,
-  LexerTokenEOF
+  Newline,
+  EndOfFile
 
 } LexerTokenType;
 
