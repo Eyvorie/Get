@@ -35,6 +35,7 @@ typedef enum {
   RightParen,
   LessThan,
   GreaterThan,
+  DollarSign,
 
   // literals
   TrueLiteral,

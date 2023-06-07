@@ -106,6 +106,14 @@ void peak_next_lexer_token(Lexer *this,
       init_token(this, token, StringLiteral, end_quote - this->src + 1);
       return;
     }
+    case '$': {
+      char *end = this->src + 1;
+      while (is_number(*end))
+        end++;
+      assert(end != this->src, "Lexer error: incorrect usage of $, requires index e.g. $1");
+      init_token(this, token, DollarSign, end - this->src);
+      return;
+    }
   }
 
   if (is_number(c)) {
