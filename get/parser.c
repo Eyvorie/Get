@@ -68,6 +68,7 @@ Value *new_literal(Token *literal)
     }
   }
   assert(false, "Parser error: unsupported literal :(");
+  return NULL; // make compiler happy
 }
 
 Assignment *new_assignment(AstNode *rhs, Token *identifier)
@@ -145,6 +146,7 @@ AstNode *new_factor(Lexer *lexer)
     }
   }
   assert(false, "Parser error: invalid factor :(");
+  return NULL; // make compiler happy
 }
 
 AstNode *new_term(Lexer *lexer)
