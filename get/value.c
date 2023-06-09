@@ -41,6 +41,35 @@ Value *new_object_value(struct HashMap *value)
   return this;
 }
 
+void init_null_value(Value *this)
+{
+  this->type = NullValue;
+}
+
+void init_integer_value(Value *this, int value)
+{
+  this->type = IntegerValue;
+  this->integer = value;
+}
+
+void init_boolean_value(Value *this, bool value)
+{
+  this->type = BooleanValue;
+  this->boolean = value;
+}
+
+void init_string_value(Value *this, String *value)
+{
+  this->type = StringValue;
+  this->string = value;
+}
+
+void init_object_value(Value *this, struct HashMap *value)
+{
+  this->type = ObjectValue;
+  this->object = value;
+}
+
 int as_integer(Value *this)
 {
   assert(this->type == IntegerValue, "invalid cast!");

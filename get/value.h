@@ -28,6 +28,12 @@ Value *new_boolean_value(bool value);
 Value *new_string_value(String *value);
 Value *new_object_value(struct HashMap *value);
 
+void init_null_value(Value *this);
+void init_integer_value(Value *this, int value);
+void init_boolean_value(Value *this, bool value);
+void init_string_value(Value *this, String *value);
+void init_object_value(Value *this, struct HashMap *value);
+
 int as_integer(Value *this);
 bool as_bool(Value *this);
 String *as_string(Value *this);
