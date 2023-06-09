@@ -1,3 +1,6 @@
+#ifndef GET_PARSER_H
+#define GET_PARSER_H
+
 #include <stdbool.h>
 #include "strings.h"
 #include "lexer.h"
@@ -48,3 +51,5 @@ struct AstNode {
 };
 
 AstNode *parse_next_line(Lexer *lexer);
+
+#endif
