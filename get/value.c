@@ -43,36 +43,36 @@ Value *new_object_value(struct HashMap *value)
 
 int as_integer(Value *this)
 {
-  assert(this->type == INTEGER_VALUE, "invalid cast!");
+  assert(this->type == IntegerValue, "invalid cast!");
   return this->integer;
 }
 
 bool as_bool(Value *this)
 {
-  assert(this->type == BOOLEAN_VALUE, "invalid cast!");
+  assert(this->type == BooleanValue, "invalid cast!");
   return this->boolean;
 }
 
 String *as_string(Value *this)
 {
-  assert(this->type == STRING_VALUE, "invalid cast!");
+  assert(this->type == StringValue, "invalid cast!");
   return this->string;
 }
 
 struct HashMap *as_object(Value *this)
 {
-  assert(this->type == OBJECT_VALUE, "invalid cast!");
+  assert(this->type == ObjectValue, "invalid cast!");
   return this->object;
 }
 
 void free_value(Value *this)
 {
   switch (this->type) {
-    case STRING_VALUE: {
+    case StringValue: {
       free_string(this->string);
       break;
     }
-    case OBJECT_VALUE: {
+    case ObjectValue: {
       free_hashmap(this->object);
       break;
     }
