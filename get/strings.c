@@ -39,6 +39,14 @@ bool compare_strings(String *this, String *other)
   return strncmp(this->characters, this->characters, this->length) == 0;
 }
 
+char *string_get_characters(String *this)
+{
+  char *string = array_of(char, this->length + 1);
+  memcpy(string, this->characters, this->length);
+  string[this->length] = 0;
+  return string;
+}
+
 void free_string(String *this)
 {
   tfree(this->characters);

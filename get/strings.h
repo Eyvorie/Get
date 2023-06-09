@@ -19,6 +19,8 @@ String *new_string_from_view(StringView *this);
 size_t string_len(String *this);
 bool compare_strings(String *this, String *other);
 
+char *string_get_characters(String *this);
+
 void free_string(String *this);
 
 #endif
