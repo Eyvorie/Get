@@ -5,11 +5,11 @@
 #include "strings.h"
 
 typedef enum {
-  NULL_VALUE,
-  INTEGER_VALUE,
-  BOOLEAN_VALUE,
-  STRING_VALUE,
-  OBJECT_VALUE
+  NullValue,
+  IntegerValue,
+  BooleanValue,
+  StringValue,
+  ObjectValue
 } ValueType;
 
 typedef struct {

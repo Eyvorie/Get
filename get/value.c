@@ -20,7 +20,7 @@ Value *new_integer_value(int value)
 Value *new_boolean_value(bool value)
 {
   Value *this = new(Value);
-  this->type = BOOLEAN_VALUE;
+  this->type = BooleanValue;
   this->boolean = value;
   return this;
 }
@@ -28,7 +28,7 @@ Value *new_boolean_value(bool value)
 Value *new_string_value(String *value)
 {
   Value *this = new(Value);
-  this->type = STRING_VALUE;
+  this->type = StringValue;
   this->string = value;
   return this;
 }
@@ -36,7 +36,7 @@ Value *new_string_value(String *value)
 Value *new_object_value(struct HashMap *value)
 {
   Value *this = new(Value);
-  this->type = OBJECT_VALUE;
+  this->type = ObjectValue;
   this->object = value;
   return this;
 }
