@@ -5,14 +5,14 @@
 Value *new_null_value()
 {
   Value *this = new(Value);
-  this->type = NULL_VALUE;
+  this->type = NullValue;
   return this;
 }
 
 Value *new_integer_value(int value)
 {
   Value *this = new(Value);
-  this->type = INTEGER_VALUE;
+  this->type = IntegerValue;
   this->integer = value;
   return this;
 }
