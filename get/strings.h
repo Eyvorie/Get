@@ -20,6 +20,7 @@ size_t string_len(String *this);
 bool compare_strings(String *this, String *other);
 
 char *string_get_characters(String *this);
+String *concat_strings(String *this, String *other);
 
 void free_string(String *this);
 

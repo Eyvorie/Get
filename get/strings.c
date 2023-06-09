@@ -47,6 +47,16 @@ char *string_get_characters(String *this)
   return string;
 }
 
+String *concat_strings(String *this, String *other)
+{
+  String *string = new(String);
+  string->length = this->length + other->length;
+  string->characters = array_of(char, string->length);
+  memcpy(string->characters, this->characters, this->length);
+  memcpy(string->characters + this->length, other->characters, other->length);
+  return string;
+}
+
 void free_string(String *this)
 {
   tfree(this->characters);
