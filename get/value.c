@@ -2,6 +2,30 @@
 #include "alloc.h"
 #include "util.h"
 
+Value *shallow_copy_value(Value *source)
+{
+  Value *this = new(Value);
+  this->type = source->type;
+  switch (this->type) {
+    case NullValue:
+      return this;
+    case IntegerValue:
+      this->integer = source->integer;
+      return this;
+    case BooleanValue:
+      this->boolean = source->boolean;
+      return this;
+    case StringValue:
+      this->string = source->string;
+      return this;
+    case ObjectValue:
+      this->object = source->object;
+      return this;
+  }
+  assert(false, "Failed to copy value");
+  return NULL;
+}
+
 Value *new_null_value()
 {
   Value *this = new(Value);

@@ -22,6 +22,7 @@ typedef struct {
   };
 } Value;
 
+Value *shallow_copy_value(Value *source);
 Value *new_null_value();
 Value *new_integer_value(int value);
 Value *new_boolean_value(bool value);
