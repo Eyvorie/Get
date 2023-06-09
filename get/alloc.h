@@ -1,5 +1,5 @@
-#ifndef _ALLOC_H_GUARD
-#define _ALLOC_H_GUARD
+#ifndef GET_ALLOC_H
+#define GET_ALLOC_H
 
 #include <stdio.h>
 #include <stdlib.h>
