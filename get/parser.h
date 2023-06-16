@@ -11,6 +11,7 @@ typedef struct AstNode AstNode;
 typedef struct {
   LexerTokenType op;
   AstNode *rhs;
+  size_t buffer_size;
   String **responses;
 } NetworkOp;
 
