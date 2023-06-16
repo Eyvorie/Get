@@ -51,5 +51,6 @@ struct AstNode {
 };
 
 AstNode *parse_next_line(Lexer *lexer);
+void free_ast(AstNode *head);
 
 #endif

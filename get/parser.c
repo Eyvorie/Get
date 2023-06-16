@@ -219,3 +219,44 @@ AstNode *parse_next_line(Lexer *lexer)
 {
   return new_statement(lexer);
 }
+
+void free_ast(AstNode *head)
+{
+  void *expression = head->expression;
+  switch (head->type) {
+    case Binary: {
+      BinaryOp *binary = expression;
+      free_ast(binary->lhs);
+      free_ast(binary->rhs);
+      tfree(binary);
+      break;
+    }
+    case Unary: {
+      UnaryOp *unary = expression;
+      free_ast(unary->rhs);
+      tfree(unary);
+      break;
+    }
+    case NetworkRequest: {
+      NetworkOp *network = expression;
+      //for (int i = 0; i < network->buffer_size; i++)
+        //free_string(network->responses[i]);
+      free_ast(network->rhs);
+      tfree(network->responses);
+      tfree(network);
+      break;
+    }
+    case Declaration: {
+      Assignment *assign = expression;
+      free_ast(assign->rhs);
+      tfree(assign);
+      break;
+    }
+    case Literal:
+    case FieldIndex:
+      free_value(expression);
+      break;
+  }
+
+  tfree(head);
+}
