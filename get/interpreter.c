@@ -331,6 +331,7 @@ int interpret(Interpreter *this,
       evaluate(this, ast, &result);
     }
     this->line = 0;
+    free_ast(ast);
     peak_next_lexer_token(&lexer, &token);
   }
 
