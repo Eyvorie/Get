@@ -234,7 +234,8 @@ void evaluate(Interpreter *this, AstNode *current,
         string_len(&var->identifier), var->identifier.characters);
       String *mangled_ident = new_string_known_len(buffer, len);
       put_hashmap_entry(this->memory,
-        mangled_ident, data); 
+        mangled_ident, data);
+      return;
     }
     case VariableCall: {
       Variable *var = current->expression;
