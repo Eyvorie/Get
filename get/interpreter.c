@@ -110,6 +110,7 @@ void resolve_request(Interpreter *this, NetworkOp *network,
   Value *ret_value)
 {
   if (this->line == 0) {
+    network->buffer_size = this->total_lines;
     network->responses = array_of(String *, this->total_lines);
 
     for (; this->line < this->concurrent_transfer_limit && this->line < this->total_lines; this->line++)
