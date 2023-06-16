@@ -82,7 +82,7 @@ size_t write_callback(void *data, size_t size,
 size_t header_callback(char *buffer, size_t size,
   size_t nitems, void *userp)
 {
-
+  return size * nitems;
 }
 
 void add_transfer(Interpreter *this, NetworkOp *network)
