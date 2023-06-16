@@ -344,4 +344,5 @@ int interpret(Interpreter *this,
   curl_global_cleanup();
 
   print_allocation_count();
+  return EXIT_SUCCESS;
 }
