@@ -337,6 +337,7 @@ int interpret(Interpreter *this,
 
   if (source_file)
     tfree(this->input);
+  tfree(this->line_table);
   free_hashmap(this->memory);
   curl_multi_cleanup(this->curl_multi_handle);
   curl_global_cleanup();
