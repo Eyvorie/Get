@@ -335,7 +335,6 @@ int interpret(Interpreter *this,
     peak_next_lexer_token(&lexer, &token);
   }
 
-  tfree(this->input);
   if (source_file)
     tfree(this->input);
   free_hashmap(this->memory);
