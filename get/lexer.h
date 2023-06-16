@@ -63,6 +63,6 @@ void init_lexer(Lexer *this, char *src);
 void peak_next_lexer_token(Lexer *this, Token *token);
 void get_next_lexer_token(Lexer *this, Token *token);
 void consume_lexer_token(Lexer *this, Token *token);
-void cleanup_lexer(Lexer *this);
+void free_lexer(Lexer *this);
 
 #endif
