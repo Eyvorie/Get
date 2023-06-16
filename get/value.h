@@ -1,6 +1,7 @@
 #ifndef GET_VALUE_H
 #define GET_VALUE_H
 
+#include <stdio.h>
 #include <stdbool.h>
 #include "strings.h"
 
@@ -45,6 +46,7 @@ Value *integer_to_string(Value *this);
 Value *boolean_to_string(Value *this);
 Value *coerce_to(Value *this, ValueType type);
 
+void print_value(FILE *outstream, Value *data);
 void free_value(Value *this);
 
 #endif

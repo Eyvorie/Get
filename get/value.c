@@ -185,3 +185,30 @@ void free_value(Value *this)
 
   tfree(this);
 }
+
+void print_value(FILE *outstream, Value *data)
+{
+  switch (data->type) {
+    case NullValue:
+      fprintf(outstream, "null\n");
+      break;
+    case IntegerValue:
+      fprintf(outstream, "%d\n", as_integer(data));
+      break;
+    case StringValue:
+      fprintf(outstream, "%.*s\n",
+        string_len(as_string(data)), data->string->characters);
+      break;
+    case ObjectValue:
+      fprintf(outstream, "I don't know how to print objects yet :(\n");
+      break;
+    case BooleanValue: {
+      if (as_bool(data)) {
+        fprintf(outstream, "true\n");
+        break;
+      }
+      fprintf(outstream, "false\n");
+      break;
+    }
+  }
+}
