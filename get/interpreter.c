@@ -9,33 +9,6 @@
 
 void evaluate(Interpreter *this, AstNode *current, Value *ret_value);
 
-void print(Interpreter *this, Value *data)
-{
-  switch (data->type) {
-    case NullValue:
-      fprintf(this->out, "null\n");
-      break;
-    case IntegerValue:
-      fprintf(this->out, "%d\n", as_integer(data));
-      break;
-    case StringValue:
-      fprintf(this->out, "%.*s\n",
-        string_len(as_string(data)), data->string->characters);
-      break;
-    case ObjectValue:
-      fprintf(this->out, "I don't know how to print objects yet :(\n");
-      break;
-    case BooleanValue: {
-      if (as_bool(data)) {
-        fprintf(this->out, "true\n");
-        break;
-      }
-      fprintf(this->out, "false\n");
-      break;
-    }
-  }
-}
-
 void resolve_unary(Interpreter *this, UnaryOp *unary, Value *ret_value)
 {
   Value rhs;
@@ -43,7 +16,7 @@ void resolve_unary(Interpreter *this, UnaryOp *unary, Value *ret_value)
 
   switch (unary->op) {
     case Print:
-      print(this, &rhs);
+      print_value(this->out, &rhs);
       init_null_value(ret_value);
       break;
   }
