@@ -156,7 +156,6 @@ void get_next_lexer_token(Lexer *this, Token *token)
   consume_lexer_token(this, token);
 }
 
-void cleanup_lexer(Lexer *this)
 void free_lexer(Lexer *this)
 {
   free_hashmap(this->keywords);
