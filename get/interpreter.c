@@ -217,8 +217,11 @@ void evaluate(Interpreter *this, AstNode *current,
       int len = sprintf(buffer, "__%d_%.*s", this->line,
         string_len(&var->identifier), var->identifier.characters);
       String *mangled_ident = new_string_known_len(buffer, len);
-      *ret_value = *get_hashmap_entry(this->memory,
+      Value *data = get_hashmap_entry(this->memory,
         mangled_ident);
+      assert(data != NULL, "Interpreter error: %.*s is not defined", 
+        string_len(&var->identifier), var->identifier.characters);
+      *ret_value = *data;
       free_string(mangled_ident);
       return;
     }
