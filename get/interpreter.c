@@ -33,7 +33,7 @@ void resolve_binary(Interpreter *this, BinaryOp *binary, Value *ret_value)
       switch (lhs.type) {
         case StringValue:
           init_string_value(ret_value,
-            concat_strings(as_string(&lhs), as_string(&rhs)));
+            concat_strings(as_string(&lhs), as_string(coerce_to(&rhs, StringValue))));
           break;
         case IntegerValue:
           init_integer_value(ret_value,
