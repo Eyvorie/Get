@@ -42,7 +42,8 @@ struct HashMap *as_object(Value *this);
 
 Value *null_to_string(Value *this);
 Value *integer_to_string(Value *this);
-Value *bool_to_string(Value *this);
+Value *boolean_to_string(Value *this);
+Value *coerce_to(Value *this, ValueType type);
 
 void free_value(Value *this);
 

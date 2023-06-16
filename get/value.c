@@ -118,6 +118,58 @@ struct HashMap *as_object(Value *this)
   return this->object;
 }
 
+Value *null_to_string(Value *this)
+{
+  const char *null_string = "null";
+  String *string = new_string_known_len(null_string, 
+    sizeof(null_string));
+  return new_string_value(string);
+}
+
+Value *integer_to_string(Value *this)
+{
+  #define MAX_DIGITS 21
+  char buffer[MAX_DIGITS];
+  int len = snprintf(buffer, 
+    sizeof(buffer), "%d", as_integer(this));
+  String *string = new_string_known_len(buffer, len);
+}
+
+Value *boolean_to_string(Value *this)
+{
+  if (as_bool(this)) {
+    const char *true_string = "true";
+    String *string = new_string_known_len(true_string, 
+      sizeof(true_string));
+    return new_string_value(string);
+  }
+  
+  const char *false_string = "false";
+  String *string = new_string_known_len(false_string, 
+    sizeof(false_string));
+  return new_string_value(string);
+}
+
+Value *coerce_to(Value *this, ValueType type)
+{
+  switch (type) {
+    case StringValue: {
+      switch (this->type) {
+        case NullValue:
+          return null_to_string(this);
+        case IntegerValue:
+          return integer_to_string(this);
+        case BooleanValue:
+          return boolean_to_string(this);
+        case StringValue:
+          return this;
+        case ObjectValue:
+          return new_string_value(new_string("{Object}"));
+      }
+    }
+  }
+}
+
 void free_value(Value *this)
 {
   switch (this->type) {
