@@ -339,6 +339,7 @@ int interpret(Interpreter *this,
     tfree(this->input);
   tfree(this->line_table);
   free_hashmap(this->memory);
+  free_lexer(&lexer);
   curl_multi_cleanup(this->curl_multi_handle);
   curl_global_cleanup();
 
