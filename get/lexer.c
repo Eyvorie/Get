@@ -77,6 +77,9 @@ void peak_next_lexer_token(Lexer *this,
     case '=':
       init_token(this, token, Assign, 1);
       return;
+    case '.':
+      init_token(this, token, Period, 1);
+      return;
     case ',':
       init_token(this, token, Comma, 1);
       return;
