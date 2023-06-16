@@ -264,6 +264,7 @@ int interpret(Interpreter *this,
   curl_multi_setopt(this->curl_multi_handle, 
     CURLOPT_MAXCONNECTS, 256L);
 
+  bool source_file = false;
   this->src = argv[1];
   this->out = stdout;
   this->memory = new_hashmap();
@@ -284,6 +285,7 @@ int interpret(Interpreter *this,
           &this->src);
         assert(success,
           "Interpreter error: failed to read source file, %s", value);
+        source_file = true;
         break;
       }
       default: {
@@ -333,6 +335,8 @@ int interpret(Interpreter *this,
   }
 
   tfree(this->input);
+  if (source_file)
+    tfree(this->input);
   free_hashmap(this->memory);
   curl_multi_cleanup(this->curl_multi_handle);
   curl_global_cleanup();
