@@ -36,7 +36,7 @@ bool compare_strings(String *this, String *other)
 {
   if (this->length != other->length)
     return false;
-  return strncmp(this->characters, this->characters, this->length) == 0;
+  return strncmp(this->characters, other->characters, this->length) == 0;
 }
 
 char *string_get_characters(String *this)
